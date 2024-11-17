@@ -1,14 +1,5 @@
 ---
-Checks: "-*, 
-  clang-diagnostic-*,
-  clang-analyzer-*,
-  cppcoreguidelines-*,
-  bugprone-*,
-  modernize-*,
-  -modernize-use-trailing-return-type,
-  performance-*,
-  portability-*,
-  google-*"
+Checks: "-*"
 WarningsAsErrors: ''
 HeaderFilterRegex: ''
 FormatStyle: file

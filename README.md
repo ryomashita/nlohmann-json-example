@@ -1,6 +1,11 @@
-# cpp-cmake-template
+# nlohmann-json-example
 
-## About
+The code samples for using [nlohmann/json](https://github.com/nlohmann/json) in C++ projects.
+
+- [Documentation](https://nlohmann.github.io/json/)
+- [/docs/examples](https://github.com/nlohmann/json/tree/develop/docs/examples)
+
+## About this template
 
 A template for C++ projects using CMake.
 This repository includes settings for the following tools:
