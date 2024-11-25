@@ -5,6 +5,12 @@ The code samples for using [nlohmann/json](https://github.com/nlohmann/json) in 
 - [Documentation](https://nlohmann.github.io/json/)
 - [/docs/examples](https://github.com/nlohmann/json/tree/develop/docs/examples)
 
+## C++ Json Library alternatives
+
+- [nativejson-benchmark](https://github.com/miloyip/nativejson-benchmark#parsing-time)
+- [rapidjson](https://github.com/Tencent/rapidjson/)
+- [simdjson](https://github.com/simdjson/simdjson)
+
 ## About this template
 
 A template for C++ projects using CMake.
