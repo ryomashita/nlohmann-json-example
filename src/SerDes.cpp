@@ -42,3 +42,22 @@ TEST(SerDes, DeserializeError) {
   }
   SUCCEED();
 }
+
+TEST(SerDes, GetOrDump) {
+  // store a string in a JSON value
+  json j_string = "this is a string";
+
+  // retrieve the string value
+  auto cpp_string = j_string.template get<std::string>();
+  // retrieve the string value (alternative when a variable already exists)
+  std::string cpp_string2;
+  j_string.get_to(cpp_string2);
+
+  // retrieve the serialized value (explicit JSON serialization)
+  std::string serialized_string = j_string.dump();
+
+  // get, get_to と異なり、dump はシリアライズデータを取得するので、 `"` を含む
+  EXPECT_TRUE(cpp_string == cpp_string2);
+  EXPECT_TRUE(cpp_string == "this is a string");
+  EXPECT_TRUE(serialized_string == R"("this is a string")");
+}
