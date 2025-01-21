@@ -27,6 +27,35 @@ TEST(SerDes, SerializeDeserialize) {
   }
 }
 
+TEST(SerDes, Utf8String) {
+  // UTF-8 文字列のテスト
+  json j1 = {
+    {"japanese", "こんにちは世界\u3042"},  // 日本語
+    {"emoji", "🌏🌍🌎"},           // 絵文字
+    {"mixed", "Hello世界😊"},      // 英数字、日本語、絵文字の混在
+    {"special", "∑∏√∞"}          // 特殊文字
+  };
+
+  // シリアライズ
+  const std::string str = j1.dump();
+  std::cout << "Serialized: " << str << std::endl;
+
+  // デシリアライズして元のデータと比較
+  try {
+    json j2 = json::parse(str);
+    EXPECT_EQ(j1, j2);
+
+    // 個別の値の検証
+    EXPECT_EQ(j2["japanese"], "こんにちは世界\u3042");
+    EXPECT_EQ(j2["emoji"], "🌏🌍🌎");
+    EXPECT_EQ(j2["mixed"], "Hello世界😊");
+    EXPECT_EQ(j2["special"], "∑∏√∞");
+  } catch (json::parse_error& e) {
+    FAIL() << "Parse error: " << e.what();
+  }
+}
+
+
 TEST(SerDes, DeserializeError) {
   // 1. Deserialize
   const std::string str =
