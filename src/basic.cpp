@@ -20,6 +20,23 @@ TEST(Basic, object) {
       {"list", {1, 0, 2}}, {"object", {{"currency", "USD"}, {"value", 42.99}}},
   };
 
+  // operator[]: キーにアクセスする
   EXPECT_TRUE(j["pi"] == 3.141);
+
+  // operator==: 2つのjsonオブジェクトが等しいかどうかを確認する
   EXPECT_TRUE(j == j2);
+
+  // contains: キーが存在するか確認する
+  EXPECT_TRUE(j.contains("pi"));
+  EXPECT_FALSE(j.contains("address"));
+
+  // emplace: キーと値を追加する
+  j.emplace("age", 30);
+  EXPECT_EQ(j["age"], 30);
+  // get<T>: キーに対応する値を取得する
+  EXPECT_EQ(j["age"].get<int>(), 30);
+  
+  // erase: キーを削除する
+  j.erase("pi");
+  EXPECT_FALSE(j.contains("pi"));
 }
